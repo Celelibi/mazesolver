@@ -1,6 +1,8 @@
+import std.conv;
 import std.stdio;
 import std.math;
 import std.datetime;
+import std.datetime.stopwatch : StopWatch;
 import core.time;
 import std.algorithm;
 import std.traits;

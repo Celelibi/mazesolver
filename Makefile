@@ -40,8 +40,7 @@ $(BIN): $(OBJ) Makefile
 %.o: DEPFILE = $(call depfile,$@)
 %.o: DEPDIR = $(call depdir,$@)
 %.o: %.d Makefile | $$(DEPDIR)
-	$(DC) -fmake-deps=$(DEPFILE) $(DFLAGS) -o $@ -c $<
-	sed -i 's,^\([^:]*\):,$*.o $(DEPFILE):,' $(DEPFILE)
+	$(DC) -M -MF $(DEPFILE) -MT $@ -MT $(DEPFILE) $(DFLAGS) -o $@ -c $<
 
 .PRECIOUS: $(DEPSDIR) %$(DEPSDIR)
 
